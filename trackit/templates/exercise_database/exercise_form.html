@@ -1,0 +1,17 @@
+<body class="exercise-database edb">
+  {% extends "trackit/base.html" %}
+  {% load bootstrap3 %}
+
+  {% block body_block %}
+  <div class="jumbotron">
+    <div class='center'>
+      <h1>Add an exercise to the database</h1>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="exercise-db-add" value="Create"></input>
+    </form>
+  </div>
+  {% endblock %}
+</body>

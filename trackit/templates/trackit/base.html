@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Track Fit</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- CSS file Link -->
+  <link href="{% static 'css/trackit.css' %}" rel="stylesheet">
+  <!-- google fonts links -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Audiowide&family=Baloo+Paaji+2:wght@600&family=Press+Start+2P&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  {% if user.is_authenticated %}
+  <nav class="navbar navbar-default navbar-edb navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class='navbar-brand' href="{% url 'accounts:logout' %}">{{ user.username }}: Logout</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Client Manager <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class='navbar-link' href="{% url 'clientmanager:client_list' %}">My Clients</a></li>
+              <li><a class='navbar-link' href="{% url 'clientmanager:create_client' %}">Add A Client</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Workouts <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class='navbar-link' href="{% url 'workouts:workout_list' %}">My Workouts</a></li>
+              <li><a class='navbar-link' href="{% url 'workouts:create_workout' %}">Create A Workout</a></li>
+            </ul>
+          </li>
+          <li><a class='navbar-link' href="{% url 'exercise_database:exercise_list' %}">Exercise Database</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  {% else %}
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class='navbar-brand' href="{% url 'accounts:sign_up' %}">Sign Up</a>
+        <a class='navbar-brand' href="{% url 'accounts:login' %}">Log In</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class='navbar-link' href="{% url 'exercise_database:exercise_list' %}">Exercise Database</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  {% endif %}
+
+  <div class="container">
+    {% block body_block %}
+    {% endblock %}
+  </div>
+
+</body>
+
+</html>
+
+<!-- <nav class='navbar navbar-default navbar-static-top'>
+    <div class="container">
+      <a class='navbar-brand' href="{% url 'home' %}">Home</a>
+
+      <ul class='nav navbar-nav navbar-right'>
+        {% if user.is_authenticated %}
+          <li><a class='navbar-link' href="{% url 'workouts:workout_list' %}">My Workouts</a></li>
+          <li><a class='navbar-link' href="{% url 'workouts:create_workout' %}">Create A Workout</a></li>
+          <li><a class='navbar-link' href="{% url 'clientmanager:client_list' %}">My Clients</a></li>
+          <li><a class='navbar-link' href="{% url 'clientmanager:create_client' %}">Add A Client</a></li>
+          <li><a class='navbar-link' href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a class='navbar-link' href="{% url 'accounts:logout' %}">{{user.username}}: Logout</a></li>
+          <li><a class='navbar-link' href="{% url 'exercise_database:exercise_list' %}">Exercises</a></li>
+        {% else %}
+          <li><a class='navbar-link' href="{% url 'accounts:login' %}">Login</a></li>
+          <li><a class='navbar-link' href="{% url 'accounts:sign_up' %}">Sign Up</a></li>
+          <li><a class='navbar-link' href="{% url 'exercise_database:exercise_list' %}">Exercises</a></li>
+        {% endif %}
+      </ul>
+
+    </div> -->

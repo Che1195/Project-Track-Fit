@@ -1,0 +1,13 @@
+{% extends 'trackit/base.html' %}
+{% load bootstrap3 %}
+
+{% block body_block %}
+  <div class="jumbotron">
+    <h1>Add New Client</h1>
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-default" btn-default value="Create Client">
+    </form>
+  </div>
+{% endblock %}

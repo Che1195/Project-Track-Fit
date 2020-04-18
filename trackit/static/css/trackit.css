@@ -1,0 +1,143 @@
+/* ########################################################################## */
+/* DIV TABLE FORMATTING, MAINLY FOR WORKOUT VIEW */
+/* ########################################################################## */
+
+div.table-date{
+  border-bottom: solid 1px grey;
+  background-color: black;
+  color: white;
+  font-size: 1.5em;
+  padding: 0px 0px 0px 0px;
+}
+
+div.table-title{
+  border-bottom: solid 16px grey;
+}
+
+div.table-header{
+  border-bottom: solid 8px black;
+}
+
+div.table-row1{
+  border-bottom: solid 3px grey;
+  padding: 14px 0px 0px 0px;
+  font-style: italic;
+}
+
+div.table-row2{
+  border-bottom: solid 1px grey;
+  border-right: solid 1px grey;
+  border-left: solid 1px grey;
+  padding: 14px 0px 0px 0px;
+}
+
+div.table-end{
+  border-bottom: solid 4px black;
+  padding: 14px 0px 0px 0px;
+}
+
+a:hover{
+  color: #2f2f2f;
+}
+
+a{
+  color: black;
+}
+
+/* ########################################################################## */
+/* BODY BACKGROUND IMAGES */
+/* ########################################################################## */
+
+body{
+  background-image: url(/static/images/default_background.jpg);
+  background-position: center
+  height: 100%;
+  opacity: .95;
+  background-attachment: fixed;
+  padding-top: 80px;
+}
+
+body.login-signup{
+  background-image: url(/static/images/login_background.jpg);
+}
+
+body.home{
+  background-image: url(/static/images/home_background.jpg);
+}
+
+body.workouts{
+  background-image: url(/static/images/workouts_background.jpg);
+}
+
+body.edb{
+  background-image: url(/static/images/edb_background.jpg);
+  opacity: 100%;
+}
+
+/* ########################################################################## */
+/* NAVBAR FORMATTING */
+/* ########################################################################## */
+
+nav{
+  font-size: 1.125em;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar-default{
+  background-color: grey;
+}
+
+/* ########################################################################## */
+/* EXERCISE DATABASE FORMATTING */
+/* ########################################################################## */
+
+.edb-title{
+  font-size: 4em;
+  /* background-color: black;
+  border: 2px solid green; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.exercise-db-add{
+  color: #5ac70f;
+  font-size: 1.25em;
+  background-color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.exercise-db-list{
+  color: #5ac70f;
+  font-size: 1.5em;
+  padding: 10px 10px 10px 10px;
+}
+
+.exercise-db-list:hover{
+  color: #5ac70f;
+}
+
+.exercise-db-add:hover{
+  color: #5ac70f;
+}
+
+.exercise-database{
+  font-family: 'Share Tech Mono', monospace;
+  background: #212121;
+  color: #5ac70f;
+}
+
+/* ########################################################################## */
+/* MISCELLANEOUS */
+/* ########################################################################## */
+
+.center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}

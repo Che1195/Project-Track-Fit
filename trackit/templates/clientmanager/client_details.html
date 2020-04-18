@@ -1,0 +1,36 @@
+{% extends 'trackit/base.html' %}
+{% load bootstrap3 %}
+
+{% block body_block %}
+<div class="jumbotron">
+  <h1>{{ client.first_name}} {{ client.last_name }}</h1>
+  <h2>Client Logs: </h2>
+</div>
+<div class="jumbotron">
+
+  {% for logged_workout in logged_workouts %}
+  <div class="row table-date">
+    <div class="col-lg-3">
+      <strong>{{ logged_workout.date }}</strong>
+    </div>
+  </div>
+  <div class="row table-end">
+    <div class="col-lg-3">
+      <h3><a href="{% url 'workouts:show_workout' pk=logged_workout.workout.pk %}">{{ logged_workout }}</a></h3>
+    </div>
+    <div class="col-lg-2">
+      <p><a href="{% url 'clientmanager:edit_loggedworkout' pk=logged_workout.pk %}"><span class='glyphicon glyphicon-pencil'></span></a></p>
+    </div>
+    <div class="col-lg-2">
+      <p><a href="{% url 'clientmanager:remove_loggedworkout' pk=logged_workout.pk %}"><span class='glyphicon glyphicon-remove'></span></a></p>
+    </div>
+  </div>
+  {% endfor %}
+  <h3><a href="{% url 'clientmanager:create_loggedworkout' %}">
+      <div class='glyphicon glyphicon-plus'></div>
+    </a></h3>
+</div>
+<a class='btn btn-danger' href="{% url 'clientmanager:remove_client' pk=client.pk %}">Delete Client</a>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'trackit/base.html' %}
+{% load bootstrap3 %}
+
+{% block body_block %}
+<div class="container">
+  <h1>Client Logs: </h1>
+  {% for logged_workout in logged_workouts %}
+  <h3><a href="{% url 'clientmanager:client_details' pk=logged_workout.client.pk %}">{{ logged_workout.client }}</a></h3>
+  <h3><a href="{% url 'workouts:show_workout' pk=logged_workout.workout.pk %}">{{ logged_workout }}</a></h3>
+  <a class='btn btn-primary btn-warning' href="{% url 'clientmanager:edit_loggedworkout' pk=logged_workout.pk %}">Update Workout Log</a>
+  <a class='btn btn-primary btn-danger' href="{% url 'clientmanager:remove_loggedworkout' pk=logged_workout.pk %}">Delete Workout Log</a>
+  <br>
+  <br>
+  {% endfor %}
+  <h2><a href="{% url 'clientmanager:create_loggedworkout' %}">Create a New Log!</a></h2>
+</div>
+{% endblock %}

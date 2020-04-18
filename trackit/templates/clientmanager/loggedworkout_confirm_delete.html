@@ -1,0 +1,12 @@
+{% extends "trackit/base.html" %}
+{% load bootstrap3 %}
+
+{% block body_block %}
+
+<h3>Are you sure you want to delete this logged workout?</h3>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Confirm Delete" class='btn btn-danger btn-large'>
+</form>
+
+{% endblock %}

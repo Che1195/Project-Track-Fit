@@ -1,0 +1,14 @@
+<body class="home">
+  {% extends "trackit/base.html" %}
+
+  {% block body_block %}
+  <div class="jumbotron">
+    {% if user.is_authenticated %}
+    <h1>Welcome back, {{ user.username }}</h1>
+    {% else %}
+    <h1>Welcome to Track Fit</h1>
+    <h3>Sign up for an account today!</h3>
+    {% endif %}
+  </div>
+  {% endblock %}
+</body>

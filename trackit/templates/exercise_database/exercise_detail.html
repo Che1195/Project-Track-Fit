@@ -1,0 +1,25 @@
+<body class="exercise-database edb">
+  {% extends "trackit/base.html" %}
+  {% load embed_video_tags %}
+
+  {% block body_block %}
+  <div class="jumbotron">
+    <div class="row">
+      <div class='col-lg-12'>
+        <h1 class='edb-title'>{{exercise.name}}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class='col-lg-4'>
+        <h3>{{exercise.description}}</h3>
+      </div>
+      <!-- The video tag: -->
+      <div class="container col-lg-4 video">
+        {% video exercise.video as my_video %}
+          {% video my_video "medium" %}
+        {% endvideo %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</body>
