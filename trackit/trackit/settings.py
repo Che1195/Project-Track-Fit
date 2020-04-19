@@ -9,11 +9,11 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-import environ
+# import environ
 import os
-env = environ.Env(DEBUG=(bool, False))
-# Reading .env file
-environ.Env.read_env()
+# env = environ.Env(DEBUG=(bool, False))
+# # Reading .env file
+# environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +25,8 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+with open(os.path.join(BASE_DIR, 'secretkey.txt')) as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'workouts',
     'accounts',
     'clientmanager',
+    'django_generate_secret_key',
 ]
 
 MIDDLEWARE = [
